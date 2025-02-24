@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presentaition/quickaction.dart';
 class Bsnl extends StatefulWidget {
   const Bsnl({super.key});
 
@@ -110,10 +111,13 @@ class _BsnlState extends State<Bsnl> {
                   ),
                 ],
               ),
+
             ],
           ),
         ),
+
         ],
+
 
         ),
       ),
@@ -121,7 +125,7 @@ class _BsnlState extends State<Bsnl> {
 
           SizedBox(height: 10,),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+            margin: EdgeInsets.symmetric(horizontal: 13,vertical: 16),
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -131,7 +135,7 @@ class _BsnlState extends State<Bsnl> {
               ),
               borderRadius: BorderRadius.circular(17),
             ),
-            child: Row(
+            child:const Row(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +158,10 @@ class _BsnlState extends State<Bsnl> {
                 Row(
                   children: [
                     Text("2", style: TextStyle(fontSize: 70, fontWeight: FontWeight.bold, color: Colors.orange)),
-                    // Text("%",style: TextStyle(color: Colors.black,fontSize: 9),),
+                     Padding(
+                       padding: const EdgeInsets.only(top:30.0),
+                       child: Text("%",style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+                     ),
                     Column(
                       children: [
                         Text("Get", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
@@ -184,28 +191,27 @@ class _BsnlState extends State<Bsnl> {
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
                Padding(
-                 padding: const EdgeInsets.only(left: 8.0),
+                 padding: const EdgeInsets.only(left: 8.0,top: 3),
                  child: Text("Quick Actions", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                ),
 
-                 Padding(
-                   padding: const EdgeInsets.only(bottom: 20.0),
-                   child: GridView.count(
+              GridView.count(
                      crossAxisCount: 4,
                      shrinkWrap: true,
                      physics: NeverScrollableScrollPhysics(),
                      children: [
-                       _quickAction(Icons.refresh, "Recharge"),
-                       _quickAction(Icons.payment, "Pay Bill"),
-                       _quickAction(Icons.phone, "Landline"),
-                       _quickAction(Icons.wifi, "Book Fiber"),
-                       _quickAction(Icons.sim_card, "Upgrade to 4G SIM"),
-                       _quickAction(Icons.numbers, "Number", isNew: true),
-                       _quickAction(Icons.notifications_off, "Do Not Disturb"),
-                       _quickAction(Icons.videogame_asset, "Games"),
+                       Quickaction(text: "Recharge", icon: Icons.refresh),
+                       Quickaction(text: "Pay bill ", icon: Icons.payment),
+                       Quickaction(icon:Icons.phone, text: "Landline"),
+                       Quickaction(icon: Icons.wifi, text: "Book Fiber"),
+                       Quickaction(icon:Icons.sim_card, text: "Upgrade to 4G SIM"),
+                       Quickaction(icon:Icons.notifications_off,text:  "Do Not Disturb"),
+                       Quickaction(icon:Icons.numbers,text: "Number",),
+                       Quickaction(icon:Icons.videogame_asset, text:"Games"),
+
                      ],
                    ),
-                 ),
+
          ]
          ),
          )
@@ -215,32 +221,15 @@ class _BsnlState extends State<Bsnl> {
 
     );
   }
-  Widget _quickAction(IconData icon, String title, {bool isNew = false}) {
-    return Column(
-      children: [
-        Stack(
-          children: [
-            CircleAvatar(
-              backgroundColor: Colors.grey.shade200,
-              radius: 30,
-              child: Icon(icon, color: Colors.black, size: 20,),
-            ),
-            // if (isNew)
-            //   Positioned(
-            //     right: 0,
-            //     top: 0,
-            //     child: Container(
-            //       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-            //       decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(8)),
-            //       child: Text("New", style: TextStyle(color: Colors.white, fontSize: 10)),
-            //     ),
-            //   ),
-          ],
-        ),
-        SizedBox(height: 5),
-        Text(title, style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold)),
-      ],
 
-    );
-  }
 }
+// Quickaction(Icons.refresh, "Recharge"),
+// _quickAction(Icons.payment, "Pay Bill"),
+// _quickAction(Icons.phone, "Landline"),
+// _quickAction(Icons.wifi, "Book Fiber"),
+// _quickAction(Icons.sim_card, "Upgrade to 4G SIM"),
+// _quickAction(Icons.numbers, "Number", isNew: true),
+// _quickAction(Icons.notifications_off, "Do Not Disturb"),
+// _quickAction(Icons.videogame_asset, "Games"),
+// ],
+// ),
